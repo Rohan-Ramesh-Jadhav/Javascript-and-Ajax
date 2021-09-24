@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DEMO APP FOR AJAX EXPLAINATION</title>
+</head>
+<body>
+	<center>
+		<h1>This page will request a phone number by passing name name passed will be 'ABC'</h1>
+		<p>click the button</p>
+		<button id="ajaxcall" style="color:white;background-color: green;width:20%;font-size: 20px;">Call</button>
+<!-- jquery file import -->
+		<script src="jquery-3.6.0.min.js"></script>
+
+<!-- ajax call script -->
+		<script type="text/javascript">
+			$("#ajaxcall").on('click',function(){
+				$.ajax({
+					url : "passNumber.php", //url of the file basicaly the path if local file 
+					type : "post",  //you can use both post and get here
+					data : {'name':'ABC'}, //this is data to pass to php file first will be name and next is value. you can pass multiple values
+					success : function(res) //here res is the return data from php file
+					{
+						console.log(JSON.parse(res)); //JSON.parse becuse i have passed data from php file by using json_encode(). If you don't use json_encode() then drop JSON.parse() and just use res
+					}
+
+				});
+			});
+		</script>				
+	</center>	
+</body>
+</html>
